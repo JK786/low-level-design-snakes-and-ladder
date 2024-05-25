@@ -37,6 +37,7 @@ public class GameManagementService {
         while(Boolean.TRUE) {
 
             final Integer currentPlayerIndex = this.getPlayerTurn();
+            this.currentPlayerIndex = currentPlayerIndex;
             System.out.println("Player " + players.get(currentPlayerIndex).getFirstName() + " turn");
 
             final Integer diceRollResult = this.dice.roll();
@@ -67,6 +68,7 @@ public class GameManagementService {
         //Check if any snake there then adjust position.
         for(int i = 0; i<this.board.getSnakes().size();i++) {
            if(nextPosition == this.board.getSnakes().get(i).getHead()) {
+               System.out.println("Snake encountered : start | " + this.board.getSnakes().get(i).getHead()  + " end | "  + this.board.getSnakes().get(i).getTail());
                nextPosition = this.board.getSnakes().get(i).getTail();
            }
         }
@@ -74,6 +76,7 @@ public class GameManagementService {
         //Check if any ladder there then adjust position.
         for(int i = 0; i<this.board.getLadders().size();i++) {
             if(nextPosition == this.board.getLadders().get(i).getBase()) {
+                System.out.println("Ladder encountered : start | " + this.board.getLadders().get(i).getBase()  + " end | "  + this.board.getLadders().get(i).getTop());
                 nextPosition = this.board.getLadders().get(i).getTop();
             }
         }
